@@ -19,8 +19,8 @@ const Modal = ({ setIsOpen }) => {
   return (
     <Div>
       <Cancle onClick={closeMOdal}>cancle</Cancle>
-      <DivBox key={data.id}>{data.imges_url}</DivBox>
-      <DivBox2>{data.imges_url}</DivBox2>
+      <DivBox key={data.id} src={data.imges_url} alt="img" />
+      <DivBox2 key={data.id} src={data.imges_url} alt="img" />
     </Div>
   );
 };
@@ -48,7 +48,7 @@ const DivBox = styled.div`
   width: 200px;
   height: 200px;
   background-color: azure;
-  gap: 100px;
+  margin-bottom: 10px;
 `;
 
 const DivBox2 = styled.div`
