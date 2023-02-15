@@ -6,6 +6,7 @@ import Modal from "./Modal";
 const App = () => {
   const [comment, setComment] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+  const [slide, setSlide] = useState(false);
 
   const getIsOPen = () => {
     setIsOpen(true);
@@ -26,7 +27,16 @@ const App = () => {
       </SmallBox>
       <Toggle />
       {/* <input type="range" value="0" min="0" max="1000" /> */}
-      <SmallListBox>123213</SmallListBox>
+      <SmallListBox>
+        <ListBox
+          onClick={() => {
+            setSlide(!slide);
+          }}
+        >
+          {slide ? setSlide : <ListBox2 />}
+        </ListBox>
+        {/* <ListBox2>123</ListBox2> */}
+      </SmallListBox>
     </BigBox>
   );
 };
@@ -56,4 +66,16 @@ const Toggle = styled.div`
 
 const SmallListBox = styled.div`
   width: 100%;
+`;
+
+const ListBox = styled.div`
+  width: 100px;
+  height: 100px;
+  background-color: aqua;
+`;
+
+const ListBox2 = styled.div`
+  width: 100px;
+  height: 100px;
+  background-color: aquamarine;
 `;
