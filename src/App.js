@@ -21,10 +21,12 @@ const App = () => {
         >
           체크 리스트
         </button>
+        <button />
         {isOpen ? <Modal setIsOpen={setIsOpen} /> : null}
       </SmallBox>
-      <input type="range" />
-      <SmallListBox>123123</SmallListBox>
+      <Toggle />
+      {/* <input type="range" value="0" min="0" max="1000" /> */}
+      <SmallListBox>123213</SmallListBox>
     </BigBox>
   );
 };
@@ -44,6 +46,12 @@ const SmallBox = styled.div`
   text-align: center;
   font-size: 80px;
   font-weight: bold;
+`;
+
+const Toggle = styled.div`
+  width: 50px;
+  height: 100px;
+  border-radius: 10px;
 `;
 
 const SmallListBox = styled.div`

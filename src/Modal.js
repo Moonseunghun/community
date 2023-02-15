@@ -4,9 +4,21 @@ import { useEffect, useState } from "react";
 
 const Modal = ({ setIsOpen }) => {
   const [data, setData] = useState({});
+  const fileInput = React.useRef(null);
+  const [loading, setLoading] = useState(true);
+
   console.log(data);
+
   const closeMOdal = () => {
     setIsOpen(false);
+  };
+
+  const handleInput = (e) => {
+    fileInput.cur.click();
+  };
+
+  const handleChange = (e) => {
+    console.log(e.target.files[0]);
   };
 
   useEffect(() => {
@@ -14,13 +26,28 @@ const Modal = ({ setIsOpen }) => {
       .then((res) => res.json())
       .then((result) => {
         setData(result);
+        setLoading(false);
       });
   }, []);
+
+  if (loading) return;
+  console.log(data[0].image_url[0]);
   return (
-    <Div>
+    <Div key={data[0].id}>
       <Cancle onClick={closeMOdal}>cancle</Cancle>
-      <DivBox key={data.id} src={data.imges_url} alt="img" />
-      <DivBox2 key={data.id} src={data.imges_url} alt="img" />
+      <DivBox src={data[0].image_url[0]} alt="img">
+        {data[0].name}
+      </DivBox>
+      <button handleInput={handleInput}>파일 선택하기</button>
+      <input
+        type="file"
+        multiple={true}
+        id="fileUpload"
+        style={{ display: "none" }}
+        ref={fileInput}
+        onChange={handleChange}
+      />
+      <DivBox2 src={data[0].image_url[1]} alt="img" />
     </Div>
   );
 };
@@ -29,11 +56,11 @@ export default Modal;
 
 const Div = styled.div`
   width: 500px;
-  height: 500px;
+  height: 600px;
   border: 1px solid black;
   position: absolute;
-
   background-color: white;
+
   gap: 10px;
 `;
 
@@ -44,15 +71,10 @@ const Cancle = styled.div`
   cursor: pointer;
 `;
 
-const DivBox = styled.div`
+const DivBox = styled.img`
   width: 200px;
   height: 200px;
-  background-color: azure;
   margin-bottom: 10px;
 `;
 
-const DivBox2 = styled.div`
-  width: 200px;
-  height: 200px;
-  background-color: black;
-`;
+const DivBox2 = styled.img``;

@@ -1,10 +1,7 @@
 [
   {
     "id": 1,
-    "image_url": "https://picsum.photos/600"
-  },
-  {
-    "id": 2,
-    "image_url": "https://picsum.photos/600"
+    "image_url": ["https://picsum.photos/600", "https://picsum.photos/400"],
+    "name": "이미지스킬"
   }
 ]
