@@ -2,11 +2,18 @@ import React from "react";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import Modal from "./Modal";
+import Ckeditor from "./Ckeditor";
 
 const App = () => {
   const [comment, setComment] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
-  const [slide, setSlide] = useState(false);
+  const [change, setChange] = useState(false);
+  const [changeTwo, setChangeTwo] = useState(false);
+  const [community, setCommunity] = useState(false);
+
+  const onClick = () => {
+    setChange(!change);
+  };
 
   const getIsOPen = () => {
     setIsOpen(true);
@@ -25,18 +32,29 @@ const App = () => {
         <button />
         {isOpen ? <Modal setIsOpen={setIsOpen} /> : null}
       </SmallBox>
-      <Toggle />
-      {/* <input type="range" value="0" min="0" max="1000" /> */}
       <SmallListBox>
-        <ListBox
-          onClick={() => {
-            setSlide(!slide);
-          }}
-        >
-          {slide ? setSlide : <ListBox2 />}
-        </ListBox>
+        <ListBox>123</ListBox>
+        <ListBox3>123</ListBox3>
         {/* <ListBox2>123</ListBox2> */}
       </SmallListBox>
+      <Community>
+        {change ? setChange : <CommunitySlide2 />}
+        {changeTwo ? setChangeTwo : <CommunitySlide3 />}
+        <Ckeditor />
+
+        <CommunitySlide>
+          <CommunitySlideBox onClick={onClick}>x</CommunitySlideBox>
+
+          <CommunitySlideBox2
+            onClick={() => {
+              setChangeTwo(!changeTwo);
+            }}
+          >
+            x
+          </CommunitySlideBox2>
+          <CommunitySlideBox3>x</CommunitySlideBox3>
+        </CommunitySlide>
+      </Community>
     </BigBox>
   );
 };
@@ -46,7 +64,7 @@ export default App;
 const BigBox = styled.div`
   width: 100%;
   height: 300px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 `;
 
 const SmallBox = styled.div`
@@ -58,14 +76,16 @@ const SmallBox = styled.div`
   font-weight: bold;
 `;
 
-const Toggle = styled.div`
-  width: 50px;
-  height: 100px;
-  border-radius: 10px;
-`;
+// const Toggle = styled.div`
+//   width: 50px;
+//   height: 10px;
+//   border-radius: 10px;
+// `;
 
 const SmallListBox = styled.div`
   width: 100%;
+  display: flex;
+  justify-content: space-between;
 `;
 
 const ListBox = styled.div`
@@ -78,4 +98,65 @@ const ListBox2 = styled.div`
   width: 100px;
   height: 100px;
   background-color: aquamarine;
+`;
+
+const Community = styled.div`
+  width: 100%;
+  height: 500px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: flex-end;
+`;
+
+const CommunitySlide = styled.div`
+  width: 100px;
+  height: 480px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+`;
+
+const CommunitySlideBox = styled.div`
+  width: 70px;
+  height: 70px;
+  border: 1px solid black;
+  box-shadow: inset;
+`;
+
+const CommunitySlideBox2 = styled.div`
+  width: 70px;
+  height: 70px;
+  border: 1px solid black;
+`;
+
+const CommunitySlideBox3 = styled.div`
+  width: 70px;
+  height: 70px;
+  border: 1px solid black;
+`;
+
+const CommunitySlide2 = styled.div`
+  width: 100%;
+  height: 500px;
+  background-color: aqua;
+  display: flex;
+  justify-content: flex-end;
+`;
+
+const CommunitySlide3 = styled.div`
+  width: 100%;
+  height: 500px;
+  background-color: black;
+  display: flex;
+  justify-content: flex-end;
+`;
+
+const ListBox3 = styled.div`
+  width: 100px;
+  height: 100px;
+  background-color: black;
 `;
