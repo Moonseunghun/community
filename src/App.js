@@ -15,46 +15,57 @@ const App = () => {
     setChange(!change);
   };
 
+  const onChange = () => {
+    setCommunity(!community);
+  };
+
   const getIsOPen = () => {
     setIsOpen(true);
   };
   return (
     <BigBox>
-      <SmallBox>
-        게시판
-        <button
-          onClick={() => {
-            setIsOpen(!isOpen);
-          }}
-        >
-          체크 리스트
-        </button>
-        <button />
-        {isOpen ? <Modal setIsOpen={setIsOpen} /> : null}
-      </SmallBox>
-      <SmallListBox>
-        <ListBox>123</ListBox>
-        <ListBox3>123</ListBox3>
-        {/* <ListBox2>123</ListBox2> */}
-      </SmallListBox>
-      <Community>
-        {change ? setChange : <CommunitySlide2 />}
-        {changeTwo ? setChangeTwo : <CommunitySlide3 />}
-        <Ckeditor />
-
-        <CommunitySlide>
-          <CommunitySlideBox onClick={onClick}>x</CommunitySlideBox>
-
-          <CommunitySlideBox2
+      <BigSmallBox>
+        <SmallBox>
+          게시판
+          <button
             onClick={() => {
-              setChangeTwo(!changeTwo);
+              setIsOpen(!isOpen);
             }}
           >
-            x
-          </CommunitySlideBox2>
-          <CommunitySlideBox3>x</CommunitySlideBox3>
-        </CommunitySlide>
-      </Community>
+            체크 리스트
+          </button>
+          <button />
+          {isOpen ? <Modal setIsOpen={setIsOpen} /> : null}
+        </SmallBox>
+        <Toggle>
+          <SmallListBox>
+            <ListBox>123</ListBox>
+            <ListBox3>123</ListBox3>
+            {/* <ListBox2>123</ListBox2> */}
+          </SmallListBox>
+        </Toggle>
+
+        {/* <MoreMin>123</MoreMin> */}
+        <Community>
+          <Ckeditor />
+
+          <CommunitySlide>
+            <CommunitySlideBox onClick={onClick}>x</CommunitySlideBox>
+
+            <CommunitySlideBox2
+              onClick={() => {
+                setChangeTwo(!changeTwo);
+              }}
+            >
+              x
+            </CommunitySlideBox2>
+            <CommunitySlideBox3>x</CommunitySlideBox3>
+          </CommunitySlide>
+        </Community>
+      </BigSmallBox>
+      <BigSlideBox>
+        <UserBox>123</UserBox>
+      </BigSlideBox>
     </BigBox>
   );
 };
@@ -62,9 +73,15 @@ const App = () => {
 export default App;
 
 const BigBox = styled.div`
-  width: 100%;
-  height: 300px;
+  width: 100vw;
+  display: flex;
+  justify-content: flex-end;
+  padding: 50px;
   /* border: 1px solid black; */
+`;
+
+const BigSmallBox = styled.div`
+  width: 1500px;
 `;
 
 const SmallBox = styled.div`
@@ -76,11 +93,13 @@ const SmallBox = styled.div`
   font-weight: bold;
 `;
 
-// const Toggle = styled.div`
-//   width: 50px;
-//   height: 10px;
-//   border-radius: 10px;
-// `;
+const Toggle = styled.div`
+  width: 100%;
+  height: 100px;
+  /* background-color: beige; */
+  display: flex;
+  justify-content: space-between;
+`;
 
 const SmallListBox = styled.div`
   width: 100%;
@@ -98,6 +117,12 @@ const ListBox2 = styled.div`
   width: 100px;
   height: 100px;
   background-color: aquamarine;
+`;
+
+const MoreMin = styled.div`
+  width: 100px;
+  height: 100px;
+  background-color: black;
 `;
 
 const Community = styled.div`
@@ -159,4 +184,17 @@ const ListBox3 = styled.div`
   width: 100px;
   height: 100px;
   background-color: black;
+`;
+
+const BigSlideBox = styled.div`
+  width: 100px;
+  height: 500px;
+  background-color: aquamarine;
+`;
+
+const UserBox = styled.div`
+  width: 30%;
+  height: 300px;
+  display: flex;
+  justify-content: flex-end;
 `;
