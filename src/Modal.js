@@ -38,7 +38,7 @@ const Modal = ({ setIsOpen }) => {
       <DivBox src={data[0].image_url[0]} alt="img">
         {data[0].name}
       </DivBox>
-      <button handleInput={handleInput}>파일 선택하기</button>
+      {/* <button handleInput={handleInput}>파일 선택하기</button>
       <input
         type="file"
         multiple={true}
@@ -46,7 +46,7 @@ const Modal = ({ setIsOpen }) => {
         style={{ display: "none" }}
         ref={fileInput}
         onChange={handleChange}
-      />
+      /> */}
       <DivBox2 src={data[0].image_url[1]} alt="img" />
     </Div>
   );
@@ -71,10 +71,10 @@ const Cancle = styled.div`
   cursor: pointer;
 `;
 
-const DivBox = styled.img`
+const DivBox = styled.div`
   width: 200px;
   height: 200px;
   margin-bottom: 10px;
 `;
 
-const DivBox2 = styled.img``;
+const DivBox2 = styled.div``;
